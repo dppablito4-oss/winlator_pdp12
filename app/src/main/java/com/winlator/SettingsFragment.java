@@ -47,6 +47,7 @@ import com.winlator.core.AppUtils;
 import com.winlator.core.ArrayUtils;
 import com.winlator.core.Callback;
 import com.winlator.core.DefaultVersion;
+import com.winlator.core.DeviceProfile;
 import com.winlator.core.FileUtils;
 import com.winlator.core.GeneralComponents;
 import com.winlator.core.LocaleHelper;
@@ -307,7 +308,7 @@ public class SettingsFragment extends Fragment {
         final Context context = getContext();
 
         Runnable updateSpinner = () -> {
-            Box64PresetManager.loadSpinner(sBox64Preset, preferences.getString("box64_preset", Box64Preset.DEFAULT));
+            Box64PresetManager.loadSpinner(sBox64Preset, preferences.getString("box64_preset", DeviceProfile.getDefaultBox64Preset(context)));
         };
 
         updateSpinner.run();

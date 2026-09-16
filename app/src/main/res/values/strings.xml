@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Winlator</string>
+    <string name="app_name">Winlator Honor 200</string>
     <string name="run">Run</string>
     <string name="edit">Edit</string>
     <string name="remove">Remove</string>
@@ -168,6 +168,7 @@
     <string name="conservative">Conservative</string>
     <string name="intermediate">Intermediate</string>
     <string name="performance">Performance</string>
+    <string name="honor_200_balanced">HONOR 200 Balanced</string>
     <string name="preset">Preset</string>
     <string name="you_cannot_remove_this_preset">You cannot remove this preset</string>
     <string name="you_cannot_remove_this_component_version">You cannot remove this component version</string>
@@ -357,4 +358,17 @@
     <string name="fgs_notification_content_else">Winlator is running in the background</string>
     <string name="save_mem_on_run_from_steam">Save memory on run from Steam</string>
     <string name="present_mode">Present Mode</string>
+    <string name="steam_launcher">Steam</string>
+    <string name="steam_launcher_title">Steam para HONOR 200</string>
+    <string name="steam_launcher_description">Acceso directo, sin animaciones ni procesos adicionales del lanzador.</string>
+    <string name="steam_open">Abrir Steam</string>
+    <string name="steam_install">Instalar Steam</string>
+    <string name="steam_ready">Steam está listo para jugar</string>
+    <string name="steam_not_installed">Steam aún no está instalado</string>
+    <string name="steam_preparing_engine">Preparando el motor de Windows…</string>
+    <string name="steam_preparing_hint">Espera a que termine la preparación y toca el botón nuevamente.</string>
+    <string name="steam_creating_container">Creando perfil optimizado para Snapdragon…</string>
+    <string name="steam_container_error">No se pudo crear el perfil de Steam.</string>
+    <string name="steam_profile_summary">Turnip + DXVK · 720p · 30 FPS · ahorro de memoria</string>
+    <string name="steam_first_run_hint">La primera vez se abrirá el instalador. Después inicia sesión normalmente con tu cuenta.</string>
 </resources>

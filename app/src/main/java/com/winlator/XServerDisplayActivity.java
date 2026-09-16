@@ -222,6 +222,7 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
             else {
                 Intent intent = getIntent();
                 if (intent.hasExtra("exec_path")) win32AppWorkarounds.applyStartupWorkarounds(FileUtils.getName(intent.getStringExtra("exec_path")));
+                else if (intent.hasExtra("exec_dos_path")) win32AppWorkarounds.applyStartupWorkarounds(FileUtils.getName(intent.getStringExtra("exec_dos_path").replace('\\', '/')));
             }
 
             this.graphicsDriver = GraphicsDrivers.parseIdentifiers(graphicsDriver);
@@ -235,7 +236,7 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
         inputControlsManager = new InputControlsManager(this);
         xServer = new XServer(this, screenInfo);
         xServer.setWinHandler(winHandler);
-        final boolean[] flags = {false, shortcut != null || getIntent().hasExtra("exec_path")};
+        final boolean[] flags = {false, shortcut != null || getIntent().hasExtra("exec_path") || getIntent().hasExtra("exec_dos_path")};
         xServer.windowManager.addOnWindowModificationListener(new WindowManager.OnWindowModificationListener() {
             @Override
             public void onUpdateWindowContent(Window window) {
@@ -506,7 +507,7 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
         if (container != null) {
             if (container.getHUDMode() == FrameRating.Mode.FULL.ordinal()) envVars.put("X11_WND_GPU_INFO", "1");
 
-            String desktopName = shortcut != null || getIntent().hasExtra("exec_path") ? "nogui" : "shell";
+            String desktopName = shortcut != null || getIntent().hasExtra("exec_path") || getIntent().hasExtra("exec_dos_path") ? "nogui" : "shell";
             String guestExecutable = "wine explorer /desktop="+desktopName+","+xServer.screenInfo+" "+getWineStartCommand();
             guestProgramLauncherComponent.setGuestExecutable(guestExecutable);
 
@@ -960,11 +961,17 @@ public class XServerDisplayActivity extends AppCompatActivity implements Navigat
         }
         else {
             Intent intent = getIntent();
-            if (intent.hasExtra("exec_path")) {
+            execArgs = intent.getStringExtra("exec_args");
+            execArgs = execArgs != null && !execArgs.isEmpty() ? " "+execArgs : "";
+
+            if (intent.hasExtra("exec_dos_path")) {
+                execPath = intent.getStringExtra("exec_dos_path");
+            }
+            else if (intent.hasExtra("exec_path")) {
                 execPath = WineUtils.unixToDOSPath(intent.getStringExtra("exec_path"), container);
 
                 if (execPath.endsWith(".lnk")) {
-                    cmdArgs = "\""+execPath+"\"";
+                    cmdArgs = "\""+execPath+"\""+execArgs;
                     execPath = null;
                 }
             }

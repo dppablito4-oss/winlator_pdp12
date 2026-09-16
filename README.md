@@ -2,7 +2,17 @@
 	<img src="logo.png" width="376" height="128" alt="Winlator Logo" />
 </p>
 
-# Winlator
+# Winlator Steam H200
+
+Personal build for the HONOR 200 (`Snapdragon 7 Gen 3` / `Adreno 720`). It adds
+a lightweight Steam-first home screen, automatically creates an optimized
+container, opens the bundled Steam installer on first use, and launches
+`steam.exe` directly afterwards.
+
+See [HONOR200.md](HONOR200.md) for the device profile, installation notes, and
+build instructions.
+
+## Upstream
 
 Winlator is an Android application that lets you to run Windows (x86_64) applications with Wine and Box86/Box64.<br>
 This repository stores the latest updates for the Winlator app source.<br>
